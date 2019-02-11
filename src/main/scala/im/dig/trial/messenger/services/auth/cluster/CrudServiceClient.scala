@@ -12,6 +12,7 @@ import scala.concurrent.duration._
 import scala.concurrent.{ExecutionContext, Future}
 
 
+/** Актор-шлюз для общения с CRUD-сервисом */
 final class CrudServiceClient extends Actor {
 
   private val cluster = Cluster(context.system)

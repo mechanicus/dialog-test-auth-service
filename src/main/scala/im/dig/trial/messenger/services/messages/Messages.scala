@@ -2,6 +2,8 @@ package im.dig.trial.messenger.services.messages
 
 import im.dig.trial.messenger.services.model.{Nickname, SessionId, UserId}
 
+// здесь собраны сообщения, которыми обмениваются микросервисы как
+// участники akka кластера
 
 sealed abstract class CrudServiceMessage
 

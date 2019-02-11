@@ -7,6 +7,9 @@ import cats.implicits._
 import org.apache.commons.codec.binary.Hex
 
 
+// здесь собраны классы общей модели всех сервисов бэкенда
+// детальные описания в CRUD-сервисе
+
 @SerialVersionUID(1L)
 final case class Nickname(value: String)
 
@@ -55,6 +58,8 @@ final case class Session (
 )
 
 
-
+// если один из микросервисов, от которых зависит этот микросервис
+// недоступен, бросается это исключение и клиенту возвращается
+// сообщение о недоступности сервиса
 final case class ServiceUnavailable(serviceName: String)
   extends RuntimeException(s"Service '$serviceName' is unavailable.")

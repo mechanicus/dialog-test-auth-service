@@ -32,12 +32,6 @@ object Responses {
 
   def ok[A](name: String, value: A): JsonResponse[Map[String, A]] = ok(Map(name -> value))
 
-//  def unauthorized(message: String): JsonResponse[String] = error(HTTP_UNAUTHORIZED, "UNAUTHORIZED", message)
-
-//  def notFound(message: String): JsonResponse[String] = error(HTTP_NOT_FOUND, "NOT_FOUND", message)
-
-//  def badRequest(message: String): JsonResponse[String] = error(HTTP_BAD_REQUEST, "BAD_REQUEST", message)
-
   def internalError(ex: Throwable): JsonResponse[String] = error(HTTP_INTERNAL_ERROR, "INTERNAL_ERROR", ex.getMessage)
 
   def success[A](code: Int, status: String, result: A): JsonResponse[A] = Success(code, status, result)

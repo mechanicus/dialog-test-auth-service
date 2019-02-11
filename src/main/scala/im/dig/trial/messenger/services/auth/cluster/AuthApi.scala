@@ -10,7 +10,7 @@ import im.dig.trial.messenger.services.model._
 import scala.concurrent.{ExecutionContext, Future}
 import scala.concurrent.duration._
 
-
+/** Основной класс, предоставляющий scala-api сервиса авторизации */
 final class AuthApi(crudServiceClient: ActorRef) {
 
   private implicit val timeout: Timeout = Timeout(1.second)

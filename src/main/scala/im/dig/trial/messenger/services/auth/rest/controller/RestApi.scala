@@ -26,6 +26,7 @@ final class RestApi(
   override def routes(implicit ec: ExecutionContext): Route = {
     pathPrefix("auth") {
       path("users") {
+        // создаем нового пользователя
         post { formFields('nickname.as[Nickname]) { nickname =>
           onSuccess(authApi.registerUser(nickname)) {
             case Right(userId) => complete(Responses.ok("userId", userId))
@@ -34,6 +35,7 @@ final class RestApi(
         }}
       } ~
       path("user" / SHA256Segment) { userId =>
+        // получаем информацию о пользователе
         get {
           complete {
             for {
@@ -43,6 +45,7 @@ final class RestApi(
         }
       } ~
       path("user" / "search") {
+        // ищем пользователя по имени
         get { parameters('nickname.as[Nickname]) { nickname =>
           complete {
             for {
@@ -52,6 +55,7 @@ final class RestApi(
         }}
       } ~
       path("sessions") {
+        // начинаем новую сессию
         post { formFields('nickname.as[Nickname]) { nickname =>
           onSuccess(authApi.startSession(nickname)) {
             case Right(sessionId) => complete(Responses.ok("sessionId", sessionId))
@@ -60,6 +64,7 @@ final class RestApi(
         }}
       } ~
       path("session" / SHA256Segment) { sessionId =>
+        // останавливаем сессию
         delete {
           complete {
             for {

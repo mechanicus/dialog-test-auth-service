@@ -9,7 +9,7 @@ import im.dig.trial.messenger.services.model.Session
 import scala.concurrent.ExecutionContext
 import scala.concurrent.duration._
 
-
+/** Элемент кластера, предоставляющий Auth-сервис для других микросервисов */
 final class AuthService(crudServiceClient: ActorRef) extends Actor {
 
   private implicit val ec: ExecutionContext = context.dispatcher
